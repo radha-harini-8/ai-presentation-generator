@@ -1,0 +1,29 @@
+# Environment / secrets
+.env
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+env/
+*.egg-info/
+
+# Database
+*.db
+*.sqlite3
+
+# Generated / uploaded data
+uploads/*
+!uploads/.gitkeep
+generated_presentations/*
+!generated_presentations/.gitkeep
+vector_store/*
+!vector_store/.gitkeep
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
+*.log

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Preview — AI Presentation Generator</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="topbar">
+  <h1 id="presTitle">Presentation Preview</h1>
+  <p id="presMeta">–</p>
+</header>
+
+<div class="container">
+
+  <div class="card">
+    <div class="btn-row" style="margin-top:0;">
+      <button class="btn secondary small" id="backBtn">← Back</button>
+      <button class="btn secondary small" id="regenAllBtn">🔄 Re-run Quality Check</button>
+      <button class="btn small" id="downloadBtn2">⬇ Download PPTX</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Slides</h2>
+    <div class="slide-nav" id="slideNav"></div>
+
+    <div class="slide-preview" id="slidePreview">
+      Loading…
+    </div>
+
+    <div class="btn-row">
+      <button class="btn secondary small" id="editBtn">✏ Edit Content</button>
+      <button class="btn secondary small" id="saveBtn" style="display:none;">💾 Save</button>
+      <button class="btn secondary small" id="regenSlideBtn">🔄 Regenerate This Slide</button>
+    </div>
+    <div class="error-banner hidden" id="previewError"></div>
+  </div>
+
+</div>
+
+<script src="js/preview.js"></script>
+</body>
+</html>

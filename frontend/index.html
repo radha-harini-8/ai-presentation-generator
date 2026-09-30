@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Presentation Generator</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="topbar">
+  <h1>AI Presentation Generator</h1>
+  <p>Create a professional PowerPoint from a topic, your documents, and a few settings.</p>
+</header>
+
+<div class="container">
+
+  <!-- ================= FORM ================= -->
+  <div class="card" id="formCard">
+    <h2>1. Topic &amp; Description</h2>
+    <label for="topic">Presentation Topic *</label>
+    <input type="text" id="topic" placeholder="e.g. Introduction to Machine Learning">
+
+    <label for="description">Description</label>
+    <textarea id="description" placeholder="A short description of what this presentation should cover..."></textarea>
+
+    <h2 style="margin-top:26px;">2. Source Documents (optional)</h2>
+    <div class="upload-zone" id="uploadZone">
+      <input type="file" id="fileInput" accept=".pdf,.docx,.txt" multiple style="display:none;">
+      <div>📄 Click or drag PDF / DOCX / TXT files here</div>
+      <div style="font-size:12px;margin-top:4px;">Max 20 MB per file</div>
+    </div>
+    <div id="docList"></div>
+
+    <h2 style="margin-top:26px;">3. Presentation Settings</h2>
+    <div class="grid-2">
+      <div>
+        <label for="numSlides">Number of Slides</label>
+        <input type="number" id="numSlides" value="10" min="3" max="30">
+      </div>
+      <div>
+        <label for="duration">Presentation Duration (minutes)</label>
+        <input type="number" id="duration" value="15" min="1" max="180">
+      </div>
+    </div>
+
+    <div class="grid-3">
+      <div>
+        <label for="audience">Audience</label>
+        <select id="audience">
+          <option>School Students</option>
+          <option>College Students</option>
+          <option selected>Professionals</option>
+          <option>Technical Audience</option>
+          <option>General Audience</option>
+        </select>
+      </div>
+      <div>
+        <label for="difficulty">Difficulty</label>
+        <select id="difficulty">
+          <option>Beginner</option>
+          <option selected>Intermediate</option>
+          <option>Advanced</option>
+        </select>
+      </div>
+      <div>
+        <label for="style">Presentation Style</label>
+        <select id="style">
+          <option>Academic</option>
+          <option selected>Professional</option>
+          <option>Simple</option>
+          <option>Technical</option>
+          <option>Minimal</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="checkbox-row">
+      <input type="checkbox" id="includeExamples" checked>
+      <label for="includeExamples">Include Examples</label>
+    </div>
+    <div class="checkbox-row">
+      <input type="checkbox" id="generateNotes" checked>
+      <label for="generateNotes">Generate Speaker Notes</label>
+    </div>
+    <div class="checkbox-row">
+      <input type="checkbox" id="useDocuments" checked>
+      <label for="useDocuments">Use Uploaded Documents</label>
+    </div>
+
+    <div id="generateBtnWrap">
+      <button class="btn" id="generateBtn">⚡ Generate Presentation</button>
+    </div>
+
+    <div class="error-banner hidden" id="formError"></div>
+  </div>
+
+  <!-- ================= PROGRESS ================= -->
+  <div class="card hidden" id="progressCard">
+    <h2>Generating your presentation…</h2>
+    <ul class="progress-list" id="progressList">
+      <li data-step="upload"><span class="dot">1</span> Documents processed</li>
+      <li data-step="outline"><span class="dot">2</span> Outline &amp; objectives generated</li>
+      <li data-step="content"><span class="dot">3</span> Slide content &amp; examples generated</li>
+      <li data-step="notes"><span class="dot">4</span> Speaker notes generated</li>
+      <li data-step="quality"><span class="dot">5</span> Quality checked</li>
+      <li data-step="ppt"><span class="dot">6</span> PowerPoint created</li>
+    </ul>
+    <div class="error-banner hidden" id="progressError"></div>
+  </div>
+
+  <!-- ================= RESULT ================= -->
+  <div class="card hidden" id="resultCard">
+    <div class="result-banner">
+      <div>✓ Presentation generated successfully</div>
+      <div class="score" id="qualityScore">–</div>
+      <div style="color:var(--text-dim);font-size:13px;">Quality Score (out of 10)</div>
+    </div>
+
+    <div class="qc-issues hidden" id="qcIssuesBox">
+      <strong>Notes from quality control:</strong>
+      <ul id="qcIssuesList"></ul>
+    </div>
+
+    <div class="btn-row" style="justify-content:center;">
+      <button class="btn" id="previewBtn">👁 Preview Presentation</button>
+      <button class="btn secondary" id="downloadBtn">⬇ Download PPTX</button>
+      <button class="btn secondary" id="newBtn">＋ New Presentation</button>
+    </div>
+  </div>
+
+</div>
+
+<script src="js/app.js"></script>
+</body>
+</html>
